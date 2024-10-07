@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Report: System Hang During High I/O Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 10px;
+            min-height: 50px;
+            border-bottom: #ddd 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        section {
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Issue Report: System Hang During High I/O Operations</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Issue Summary</h2>
+            <p><strong>HSD No.:</strong> 4557682314</p>
+            <p><strong>Title:</strong> System Hang Observed During High I/O Workload</p>
+            <p><strong>Description:</strong> During high input/output (I/O) operations, the system becomes unresponsive, requiring a hard reset to recover. This issue occurs intermittently under heavy disk and network activity.</p>
+        </section>
+
+        <section>
+            <h2>Hardware Configuration</h2>
+            <ul>
+                <li><strong>Hardware Model:</strong> HP ProLiant DL380 Gen10</li>
+                <li><strong>Storage Adapter:</strong> HPE Smart Array P408i-a SR Gen10</li>
+                <li><strong>Storage:</strong> 4x 1.92TB SSD, RAID 10</li>
+                <li><strong>Memory:</strong> 128 GB RAM</li>
+                <li><strong>CPU:</strong> Intel Xeon Silver 4216 (2x)</li>
+                <li><strong>Firmware Version:</strong> 3.55.0</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Software Configuration</h2>
+            <ul>
+                <li><strong>Operating System:</strong> CentOS 7.9</li>
+                <li><strong>Kernel Version:</strong> 3.10.0-1160.42.2.el7.x86_64</li>
+                <li><strong>Storage Driver Version:</strong> hpsa 3.4.20</li>
+                <li><strong>RAID Configuration:</strong> RAID 10 (4 SSDs)</li>
+                <li><strong>File System:</strong> XFS</li>
+                <li><strong>Network Configuration Tool:</strong> <code>ifcfg 1.15.0</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Steps to Reproduce</h2>
+            <ol>
+                <li>Initiate a large file transfer between the local SSDs and a remote NFS server.</li>
+                <li>Simultaneously perform disk-intensive operations such as database queries or large-scale backups.</li>
+                <li>Monitor system responsiveness and I/O activity.</li>
+                <li>Observe if the system becomes unresponsive during the operation.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Expected Result</h2>
+            <p>The system should remain responsive, even under high I/O workloads, and all operations should complete successfully without interruption.</p>
+        </section>
+
+        <section>
+            <h2>Actual Result</h2>
+            <p>The system becomes unresponsive during heavy I/O operations and requires a hard reset to recover.</p>
+        </section>
+
+        <section>
+            <h2>Attached Files</h2>
+            <ul>
+                <li><a href="files/io-stats.txt" download>I/O Statistics Log</a></li>
+                <li><a href="files/system-logs.txt" download>System Logs</a></li>
+                <li><a href="files/disk-activity.txt" download>Disk Activity Log</a></li>
+                <li><a href="files/network-logs.txt" download>Network Logs</a></li>
+                <li><a href="files/reproduction-steps.txt" download>Steps to Reproduce</a></li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
